@@ -11,13 +11,16 @@ const SignUp = React.lazy(() => import('./components/Pages/SignUp'))
 function App() {
   const navigate = useNavigate()
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsuscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         navigate('/home')
       }
       else {
         navigate('/login')
       }
+    })
+    return (() => {
+      unsuscribe()
     })
     // eslint-disable-next-line
   }, [])
