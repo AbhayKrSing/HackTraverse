@@ -335,3 +335,36 @@ header {
 .logout-button:hover {
   background-color: #850303;
 }
+
+/* BeautifulCard.css */
+.card {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 60px;
+  color: #0B666A;
+  user-select: none;
+}
+
+.plus {
+  font-size: 60px;
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}

@@ -24,7 +24,7 @@ function App() {
   }, [])
   return (
     <>
-      <React.Suspense fallback={<div style={{ textAlign: 'center' }}><img src={Spinner} alt="" /></div>}>
+      <React.Suspense fallback={<div style={{ textAlign: 'center' }}><img src={Spinner} alt="Loading" /></div>}>
         <Routes>
           <Route path='/' element={<LandingPage />}></Route>
           <Route path='/login' element={<Login />}></Route>
