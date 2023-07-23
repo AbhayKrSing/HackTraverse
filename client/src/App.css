@@ -396,3 +396,37 @@ header {
   font-size: 16px;
   cursor: pointer;
 }
+
+/*  */
+.vertical-line {
+  position: relative;
+  width: 2px;
+  height: 200px;
+  /* Adjust the height of the vertical line */
+  background-color: #0B666A;
+}
+
+.glowing-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background-color: #0B666A;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(11, 102, 106, 0.5), 0 0 20px rgba(11, 102, 106, 0.3);
+  animation: glowingAnimation 2s infinite;
+}
+
+@keyframes glowingAnimation {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(11, 102, 106, 0.5), 0 0 20px rgba(11, 102, 106, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(11, 102, 106, 0.9), 0 0 30px rgba(11, 102, 106, 0.7);
+  }
+}

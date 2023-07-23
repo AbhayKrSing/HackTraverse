@@ -13,7 +13,6 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user)
         navigate('/home')
       }
       else {
