@@ -5,8 +5,10 @@ const Loginpage = () => {
     const emailref = useRef();
     const passwordref = useRef();
     const navigate = useNavigate()
-    const login = async () => {
+    const login = async (e) => {
+
         try {
+            e.preventDefault()
             const loginedUser = await SignInWithEmailAndPassword(auth, emailref.current.value, passwordref.current.value);
             console.log(loginedUser)
             navigate('/home')

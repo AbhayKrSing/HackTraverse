@@ -248,3 +248,90 @@ header {
 .signup-form button:hover {
   background-color: #850303;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0B666A;
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar-brand {
+  flex: 1;
+}
+
+.logo {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-icon.open .menu-line {
+  background-color: white;
+}
+
+.menu-icon .menu-line {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0;
+  transition: background-color 0.3s;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+}
+
+.menu li {
+  margin-right: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #0B666A;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .menu.open {
+    display: flex;
+  }
+}
+
+.logout-button {
+  background-color: crimson;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #850303;
+}
