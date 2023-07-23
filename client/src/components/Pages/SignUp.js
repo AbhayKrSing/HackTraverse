@@ -36,11 +36,11 @@ const SignUp = () => {
                 <div>
                     <form className="signup-form" onSubmit={signup}>
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" onChange={handlechange} required />
+                        <input type="email" id="email" name="email" onChange={handlechange} required autoComplete='on' />
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" name="password" onChange={handlechange} required />
+                        <input type="password" id="password" name="password" onChange={handlechange} required autoComplete='on' />
                         <label htmlFor="cpassword">Confirm Password</label>
-                        <input type="password" id="cpassword" name="cpassword" onChange={handlechange} required />
+                        <input type="password" id="cpassword" name="cpassword" onChange={handlechange} required autoComplete='on' />
                         <span style={{ width: '20px' }}>
                             <AnimateCheckIcon isVisible={matching} />
                         </span>

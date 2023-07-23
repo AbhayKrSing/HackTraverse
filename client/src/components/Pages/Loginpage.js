@@ -25,9 +25,9 @@ const Loginpage = () => {
                     <div>
                         <form className="login-form" onSubmit={login}>
                             <label htmlFor="username">Username</label>
-                            <input type="text" id="email" name="email" required ref={emailref} />
+                            <input type="text" id="email" name="email" required ref={emailref} autoComplete='on' />
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password" name="password" required ref={passwordref} />
+                            <input type="password" id="password" name="password" required ref={passwordref} autoComplete='on' />
                             <button type="submit" className="login-button">Login</button>
                             <div>Don't have Account ?? <Link to="/signup">SignUp</Link></div>
                         </form>
