@@ -1,0 +1,250 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+header {
+  background-color: #0B666A;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.hero-section {
+  text-align: center;
+  color: #0B666A;
+  background-color: #F0F0F0;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h2 {
+  color: #0B666A;
+  margin-top: 0;
+}
+
+.hero-section p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: crimson;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #850303;
+}
+
+.features-section {
+  text-align: center;
+  margin-top: 50px;
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.features-section h2 {
+  color: #0B666A;
+}
+
+.features-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features-section li {
+  margin-bottom: 15px;
+}
+
+.features-section li::before {
+  content: "\2022";
+  color: crimson;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.footer {
+  background-color: #0B666A;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  header {
+    padding: 15px 0;
+  }
+
+  .container {
+    padding-top: 30px;
+  }
+
+  .hero-section {
+    padding: 20px;
+  }
+
+  .cta-button {
+    font-size: 16px;
+    padding: 12px 25px;
+  }
+
+  .features-section {
+    margin-top: 30px;
+    padding: 30px;
+  }
+}
+
+/*  */
+.logincontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.login-section {
+  text-align: center;
+  color: #0B666A;
+  background-color: #F0F0F0;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-section h2 {
+  color: #0B666A;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form label {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #0B666A;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form button {
+  background-color: crimson;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #850303;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.signup-section {
+  text-align: center;
+  color: #0B666A;
+  background-color: #F0F0F0;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-section h2 {
+  color: #0B666A;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-form label {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #0B666A;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.signup-form button {
+  background-color: crimson;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+  background-color: #850303;
+}
