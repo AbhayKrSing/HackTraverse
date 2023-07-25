@@ -339,8 +339,8 @@ header {
 /* BeautifulCard.css */
 .card {
   margin: auto;
-  width: 200px;
-  height: 200px;
+  width: 500px;
+  height: 250px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 10px 8px 15px rgba(0, 0, 0, 0.467), 10px 6px 10px rgba(0, 0, 0, 0.467);
@@ -353,9 +353,9 @@ header {
 }
 
 .plus {
-  font-size: 60px;
-  font-weight: bold;
-  color: #333;
+  font-size: 90px;
+  font-weight: lighter;
+  color: #0B666A;
 }
 
 .card:hover {
