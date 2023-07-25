@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 
-const Card = () => {
+const Card = ({ element }) => {
     const Inputref = useRef()
     const [imageurl, setimageurl] = useState(null)
     const [videourl, setvideourl] = useState('')
@@ -10,6 +10,8 @@ const Card = () => {
     const handlechange = (e) => {
         const file = e.target.files[0]
         renderImage(file) //for rendering image or video.
+
+
     }
     const renderImage = (data) => {
         const url = URL.createObjectURL(data)
