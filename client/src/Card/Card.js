@@ -1,5 +1,5 @@
 import { uploadBytes, ref } from 'firebase/storage';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { storage } from '../components/Firebase';
 
 const Card = ({ LoginUser, setLoginUser }) => {
@@ -7,16 +7,16 @@ const Card = ({ LoginUser, setLoginUser }) => {
     const [selectedMedia, setSelectedMedia] = useState(null);
     const [files, setfiles] = useState({})
     const handleFileInputChange = async (event) => {
-        const file = event.target.files[0];
-        setfiles(file)
-        if (file) {
-            const fileURL = URL.createObjectURL(file);
+        const filedata = event.target.files[0];
+        setfiles(filedata)
+        if (filedata) {
+            const fileURL = URL.createObjectURL(filedata);
             setSelectedMedia(fileURL);
         }
         //To add file in firebase's Store.
         try {
-            const storageRef = ref(storage, LoginUser.uid + "(" + file.name + ")")
-            uploadBytes(storageRef, file).then((snapshot) => {
+            const storageRef = ref(storage, LoginUser.uid + "(" + filedata.name + ")")
+            uploadBytes(storageRef, filedata).then((snapshot) => {
                 console.log('Uploaded a blob or file!', snapshot);
             })
         } catch (e) {
@@ -25,9 +25,6 @@ const Card = ({ LoginUser, setLoginUser }) => {
 
 
     };
-    useEffect(() => {
-        console.log(selectedMedia)
-    }, [selectedMedia])
     return (
         <div className="card" id="card" style={{ padding: '10px', margin: 'auto' }}>
             <div className="content" id="content">

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Card from '../../Card/Card'
 import Distingusiher from '../Distinguisher'
@@ -8,6 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 
 const Home = ({ setLoginUser, LoginUser }) => {
     const navigate = useNavigate()
+    const [filedata, setfiledata] = useState([])
     useEffect(() => {
         const unsuscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -27,9 +28,15 @@ const Home = ({ setLoginUser, LoginUser }) => {
             <Navbar />
             <h1 style={{ textAlign: 'center' }}>Add your journey videos & images here</h1>
             <Card LoginUser={LoginUser} setLoginUser={setLoginUser} />
-            <div style={{ display: 'none' }}>
-                <Distingusiher />
-            </div>
+
+            {filedata.map((element) => {
+                return (<div>
+                    <div style={{ display: 'none' }}>
+                        <Distingusiher />
+                    </div>
+                    <Card LoginUser={LoginUser} setLoginUser={setLoginUser} />
+                </div>)
+            })}
 
         </div>
     )
