@@ -2,7 +2,7 @@ import { uploadBytes, ref } from 'firebase/storage';
 import React, { useState } from 'react'
 import { storage } from '../components/Firebase';
 
-const Card = ({ LoginUser, setLoginUser }) => {
+const Card = ({ LoginUser, setfilearray, filearray, element }) => {
 
     const [selectedMedia, setSelectedMedia] = useState(null);
     const [files, setfiles] = useState({})
@@ -12,6 +12,7 @@ const Card = ({ LoginUser, setLoginUser }) => {
         if (filedata) {
             const fileURL = URL.createObjectURL(filedata);
             setSelectedMedia(fileURL);
+            setfilearray([...filearray, filearray[filearray.length - 1] + 1])
         }
         //To add file in firebase's Store.
         try {
@@ -39,7 +40,7 @@ const Card = ({ LoginUser, setLoginUser }) => {
                 ) : (
                     <label htmlFor="file-input" className="plus">+</label>
                 )}
-                <input type="file" accept="image/*, video/*" id="file-input" onChange={handleFileInputChange} />
+                <input type="file" accept="image/*, video/*" id={"file-input" + element} onChange={handleFileInputChange} />
             </div>
         </div>
     )

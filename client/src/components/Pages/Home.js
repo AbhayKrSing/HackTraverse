@@ -8,7 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 
 const Home = ({ setLoginUser, LoginUser }) => {
     const navigate = useNavigate()
-    const [filedata, setfiledata] = useState([])
+    const [filearray, setfilearray] = useState([1])
     useEffect(() => {
         const unsuscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -27,14 +27,13 @@ const Home = ({ setLoginUser, LoginUser }) => {
         <div>
             <Navbar />
             <h1 style={{ textAlign: 'center' }}>Add your journey videos & images here</h1>
-            <Card LoginUser={LoginUser} setLoginUser={setLoginUser} />
 
-            {filedata.map((element) => {
-                return (<div>
-                    <div style={{ display: 'none' }}>
+            {filearray.map((element, i) => {
+                return (<div key={i}>
+                    <div style={{ display: `${i > 0 ? 'block' : 'none'}` }}>
                         <Distingusiher />
                     </div>
-                    <Card LoginUser={LoginUser} setLoginUser={setLoginUser} />
+                    <Card LoginUser={LoginUser} setLoginUser={setLoginUser} filearray={filearray} setfilearray={setfilearray} element={element} />
                 </div>)
             })}
 
