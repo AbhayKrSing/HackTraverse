@@ -338,63 +338,34 @@ header {
 
 /* BeautifulCard.css */
 .card {
-  position: relative;
+  margin: auto;
   width: 200px;
   height: 200px;
-  border-radius: 15px;
   background-color: #fff;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.844);
-  /* Updated box-shadow */
-  cursor: pointer;
-  overflow: hidden;
-  /* Hide any overflowing content */
-}
-
-.content {
-  position: relative;
+  border-radius: 10px;
+  box-shadow: 10px 8px 15px rgba(0, 0, 0, 0.467), 10px 6px 10px rgba(0, 0, 0, 0.467);
+  /* Updated box shadow */
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 60px;
-  color: #0B666A;
-  user-select: none;
+  transition: box-shadow 0.2s;
+  /* Adding transition for smooth effect */
 }
 
 .plus {
   font-size: 60px;
-  transition: transform 0.2s ease;
+  font-weight: bold;
+  color: #333;
 }
 
-.card:hover .plus {
-  transform: scale(1.2);
-  /* Enlarge the "+" symbol on hover */
+.card:hover {
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.15);
+  /* Increase shadow on hover */
 }
 
-.media {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 15px;
-  /* Show the media only if visible */
-}
-
-.remove-button {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #0B666A;
-  color: #fff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
+.plus:hover {
+  font-size: 80px;
+  /* Increase font size on hover */
 }
 
 /*  */
