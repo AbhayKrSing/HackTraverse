@@ -1,40 +1,67 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 
-const Card = ({ element }) => {
+const Card = () => {
     const Inputref = useRef()
-    const [imageurl, setimageurl] = useState(null)
-    const [videourl, setvideourl] = useState('')
-    const openinput = () => {
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const handleResize = () => {
+        setScreenWidth(window.innerWidth)
+    }
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+    const openInput = () => {
         Inputref.current.click()
     }
-    const handlechange = (e) => {
-        const file = e.target.files[0]
-        renderImage(file) //for rendering image or video.
-
-
-    }
-    const renderImage = (data) => {
-        const url = URL.createObjectURL(data)
-        if (data.type.startsWith('image')) {
-            setimageurl(url)
-        }
-        else if (data.type.startsWith('video')) {
-            setvideourl(url)
-            document.getElementById('inputvideo').style.display = 'block'
-        }
-        document.getElementById('plus').style.display = 'none'
-    }
     return (
-        <>
-            <div className="card">
-                <div className="plus" onClick={openinput} id='plus'>+</div>
-                <input type="file" accept='video/*,image/*' style={{ display: 'none' }} ref={Inputref} onChange={handlechange} />
 
-                {imageurl ? (<img src={imageurl} alt="img" srcSet="" width={'90%'} height={'90%'} style={{ borderRadius: '10px' }} id='inputimg' />) :
-                    (<video src={videourl} width={'90%'} height={'90%'} style={{ borderRadius: '10px', display: 'none' }} id='inputvideo' controls></video>)}
-            </div>
-        </>
-    )
-}
+        <div style={{
+            margin: '30px',
+            display: 'grid',
+            gridTemplateColumns: `${screenWidth < 768 ? '1fr' : '1fr 1fr 1fr'}`, /* Use a single column on smaller screens */
+            gap: '20px', /* Add gap between grid items */
+        }}>
+            <div></div>
+            <motion.div
+                className="card"
+                style={{
+                    width: '70%', /* Make the card width 100% for smaller screens */
+                    height: '200px',
+                    display: 'flex', /* Use flex for centering content */
+                    justifySelf: "center"
+                }}
+                initial={{ scale: 0 }}
+                animate={{ rotate: 180, scale: 1 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                }}
+            >
+                <button style={{
+                    borderRadius: '50px',
+                    background: 'linear-gradient(45deg, #FF6B6B, #FF8E53)',
+                    border: 'none',
+                    color: 'white',
+                    padding: '10px 20px',
+                    fontSize: '30px',
+                    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s, box-shadow 0.2s',
+                    outline: 'none',
+                    textTransform: 'uppercase'
+                }} className="sexy-button" onClick={openInput}>
+                    +
+                </button>
+                <input type="file" accept="image/*, video/*" capture="camera" style={{ display: 'none' }} ref={Inputref} />
 
-export default Card
+            </motion.div >
+        </div >
+
+    );
+};
+
+export default Card;

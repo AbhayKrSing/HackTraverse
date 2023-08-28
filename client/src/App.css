@@ -336,68 +336,54 @@ header {
   background-color: #850303;
 }
 
-/* BeautifulCard.css */
 .card {
-  margin: auto;
-  width: 500px;
-  height: 250px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 10px 8px 15px rgba(0, 0, 0, 0.467), 10px 6px 10px rgba(0, 0, 0, 0.467);
-  /* Updated box shadow */
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: box-shadow 0.2s;
-  /* Adding transition for smooth effect */
+  background: white;
+  border-radius: 30px;
+  box-shadow: rgba(38, 57, 77, 0.9) 0px 4px 10px 2px;
+  font-size: 100px;
 }
 
-.plus {
-  font-size: 90px;
-  font-weight: lighter;
-  color: #0B666A;
+@media screen and (max-width: 768px) {
+  .card {
+    font-size: 60px;
+    /* Adjust font size for smaller screens */
+    border-radius: 20px;
+    /* Smaller border radius */
+    box-shadow: rgba(38, 57, 77, 0.7) 0px 2px 6px 1px;
+    /* Adjusted shadow */
+  }
 }
 
-.card:hover {
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.15);
-  /* Increase shadow on hover */
-}
+@media screen and (max-width: 768px) {
 
-.plus:hover {
-  font-size: 80px;
-  /* Increase font size on hover */
-}
-
-/*  */
-.vertical-line {
-  position: relative;
-  width: 2px;
-  height: 200px;
-  /* Adjust the height of the vertical line */
-  background-color: #0B666A;
-}
-
-.glowing-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 16px;
-  height: 16px;
-  background-color: #0B666A;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 10px rgba(11, 102, 106, 0.5), 0 0 20px rgba(11, 102, 106, 0.3);
-  animation: glowingAnimation 2s infinite;
-}
-
-@keyframes glowingAnimation {
-
-  0%,
-  100% {
-    box-shadow: 0 0 10px rgba(11, 102, 106, 0.5), 0 0 20px rgba(11, 102, 106, 0.3);
+  /* Apply the following styles only on mobile screens */
+  div {
+    grid-template-columns: 1fr;
+    /* Change to a single column layout */
+    text-align: center;
+    /* Center text within the paragraph */
   }
 
-  50% {
-    box-shadow: 0 0 20px rgba(11, 102, 106, 0.9), 0 0 30px rgba(11, 102, 106, 0.7);
+  .card {
+    /* Adjust styles for the motion.div */
+    width: 100%;
+    margin-right: 0;
+    /* Remove margin on the right */
+    height: auto;
+    /* Allow height to adjust based on content */
   }
+
+  p {
+    margin-top: 10px;
+    /* Adjust top margin */
+  }
+}
+
+.sexy-button:hover {
+  background: linear-gradient(45deg, #FF8E53, #FF6B6B);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
 }

@@ -3,10 +3,9 @@ import Navbar from '../Navbar/Navbar'
 import { useNavigate } from 'react-router-dom'
 import { auth, storage } from '../Firebase'
 import { onAuthStateChanged } from 'firebase/auth'
-import Card from '../Card/Card'
 import { ref, listAll } from 'firebase/storage'
-
-const Home = ({ setLoginUser, LoginUser }) => {
+import Card from '../Card/Card'
+const Home = ({ setLoginUser }) => {
     const [filearray, setfilearray] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
@@ -41,9 +40,7 @@ const Home = ({ setLoginUser, LoginUser }) => {
         <div>
             <Navbar />
             <h1 style={{ textAlign: 'center' }}>Add your journey videos & images here</h1>
-            {filearray.map((element, i) => {
-                return (<Card key={i} element={element} />)
-            })}
+            <Card />
         </div>
     )
 }
