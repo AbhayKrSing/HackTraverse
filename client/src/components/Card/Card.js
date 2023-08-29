@@ -9,7 +9,7 @@ const Card = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [currentImageUrl, setcurrentImageUrl] = useState('')
     const [imageUrls, setimageUrls] = useState([])
-    const [currentText, setcurrentText] = useState('')
+    const [currentText, setcurrentText] = useState([])
     const handleResize = () => {
         setScreenWidth(window.innerWidth)
     }
@@ -40,7 +40,7 @@ const Card = () => {
             <div id="main-container">
 
                 {imageUrls.map((element, index) => {
-                    return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} currentText={currentText} setcurrentText={setcurrentText} />)  //Abhi karna hai currentText[index]
+                    return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} Text={currentText[index]} />)  //Abhi karna hai currentText[index]
                 })}
                 <div style={{
                     margin: '10px 30px 10px 30px',

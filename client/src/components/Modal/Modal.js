@@ -5,7 +5,7 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
     const inputref = useRef()
     const SaveChanges = () => {
         if (inputref.current.value) {
-            setcurrentText(inputref.current.value)
+            setcurrentText([...currentText, inputref.current.value])
             setimageUrls([...imageUrls, currentImageUrl]);
             closeref.current.click()
             scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height

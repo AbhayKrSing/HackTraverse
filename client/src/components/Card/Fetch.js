@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-const Fetch = ({ screenWidth, Url, num, currentText, setcurrentText }) => {
+const Fetch = ({ screenWidth, Url, num, Text }) => {
     return (
         <>
 
             <div style={{
                 margin: '10px 30px 10px 30px',
                 display: 'grid',
-                gridTemplateColumns: `${screenWidth < 768 ? '1fr' : '1fr 1fr 1fr'}`, /* Use a single column on smaller screens */
-                gap: '20px', /* Add gap between grid items */
+                gridTemplateColumns: `${screenWidth < 768 ? '1fr' : '1fr 1fr 1fr'}`,
+                gap: '20px',
             }}>
-                <div id={screenWidth < 768 ? '' : num % 2 !== 0 ? 'div-left' : ''} style={{ height: screenWidth < 768 ? '' : '200px', textAlign: 'end', overflow: 'visible', order: screenWidth < 768 && num !== 0 ? 1 : 0 }}>{num % 2 !== 0 ? currentText : ''}</div>
+                <div id={screenWidth < 768 ? '' : num % 2 !== 0 ? 'div-left' : ''} style={{ height: screenWidth < 768 ? '' : '200px', textAlign: 'end', overflow: 'visible', order: screenWidth < 768 && num !== 0 ? 1 : 0 }}>{num % 2 !== 0 ? Text : ''}</div>
                 <motion.div
                     className="card"
                     style={{
@@ -32,7 +32,7 @@ const Fetch = ({ screenWidth, Url, num, currentText, setcurrentText }) => {
                 >
                     <img src={Url} alt="img" srcSet="" width={"100%"} />
                 </motion.div >
-                <div id={screenWidth < 768 ? '' : num % 2 !== 0 ? '' : 'div-right'} style={{ height: screenWidth < 768 ? '' : '200px', textAlign: 'start', overflow: 'visible' }}>{num % 2 !== 0 ? '' : currentText}</div>
+                <div id={screenWidth < 768 ? '' : num % 2 !== 0 ? '' : 'div-right'} style={{ height: screenWidth < 768 ? '' : '200px', textAlign: 'start', overflow: 'visible' }}>{num % 2 !== 0 ? '' : Text}</div>
             </div >
             {/* for vertical line */}
             <div style={{ display: screenWidth < 768 ? 'none' : 'flex', justifyContent: 'center', alignItems: 'center' }}>
