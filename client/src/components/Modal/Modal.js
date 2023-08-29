@@ -1,11 +1,19 @@
 import React, { useRef } from 'react'
 
-const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll }) => {
+const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, currentText, setcurrentText }) => {
     const closeref = useRef()
+    const inputref = useRef()
     const SaveChanges = () => {
-        setimageUrls([...imageUrls, currentImageUrl]);
-        scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height
-        closeref.current.click()
+        if (inputref.current.value) {
+            setcurrentText(inputref.current.value)
+            setimageUrls([...imageUrls, currentImageUrl]);
+            closeref.current.click()
+            scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height
+            inputref.current.value = null
+        }
+        else {
+            //use alert here (later)
+        }
     }
     return (
         <div>
@@ -22,7 +30,7 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll }) =
                         </div>
                         <div className="mb-3 mx-auto" style={{ width: '95%' }} >
                             <label for="exampleInputEmail1" className="form-label">Write Something about it here</label>
-                            <input type="text" className="form-control" id="exampleInputtext" aria-describedby="emailHelp" />
+                            <input type="text" className="form-control" id="exampleInputtext" aria-describedby="emailHelp" ref={inputref} />
                             <button type="button" class="btn btn-primary mt-4" onClick={SaveChanges}>Save changes</button>
                             <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal" ref={closeref}>Close</button>
                         </div>

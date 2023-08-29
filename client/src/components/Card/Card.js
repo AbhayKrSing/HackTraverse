@@ -9,10 +9,11 @@ const Card = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [currentImageUrl, setcurrentImageUrl] = useState('')
     const [imageUrls, setimageUrls] = useState([])
+    const [currentText, setcurrentText] = useState('')
     const handleResize = () => {
         setScreenWidth(window.innerWidth)
     }
-    useEffect(() => {
+    useEffect(() => {  //for tracking screen width.
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -39,7 +40,7 @@ const Card = () => {
             <div id="main-container">
 
                 {imageUrls.map((element, index) => {
-                    return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} />)
+                    return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} currentText={currentText} setcurrentText={setcurrentText} />)  //Abhi karna hai currentText[index]
                 })}
                 <div style={{
                     margin: '10px 30px 10px 30px',
@@ -83,7 +84,7 @@ const Card = () => {
                     </motion.div >
                 </div >
             </div>
-            <Modal currentImageUrl={currentImageUrl} imageUrls={imageUrls} setimageUrls={setimageUrls} scroll={scroll}> <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={Modelref}>
+            <Modal currentImageUrl={currentImageUrl} imageUrls={imageUrls} setimageUrls={setimageUrls} scroll={scroll} currentText={currentText} setcurrentText={setcurrentText}> <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={Modelref}>
                 Launch demo modal
             </button></Modal>
 
