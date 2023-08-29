@@ -39,7 +39,7 @@ const Card = () => {
                 <div style={{
                     margin: '10px 30px 10px 30px',
                     display: 'grid',
-                    gridTemplateColumns: `${screenWidth < 768 ? '1fr' : '1fr 1fr 1fr'}`, /* Use a single column on smaller screens */
+                    gridTemplateColumns: `${screenWidth < 768 ? '1fr' : 'repeat(3,1fr)'}`, /* Use a single column on smaller screens */
                     gap: '20px', /* Add gap between grid items */
                 }}>
                     <div></div>
