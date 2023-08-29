@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Fetch from "./Fetch";
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { animateScroll as scroll } from 'react-scroll';
 const Card = () => {
     const Inputref = useRef()
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [imageUrls, setimageUrls] = useState([])
-    // const [mutatingscroll, setmutatingscroll] = useState(0) //abhi ke liye comment out kar rha
     const handleResize = () => {
         setScreenWidth(window.innerWidth)
     }
@@ -16,20 +15,17 @@ const Card = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-    // useEffect(() => {
-    //     if (mutatingscroll > 0) {
-    //         window.scrollTo(0, mutatingscroll);
-    //     }
-    // }, [mutatingscroll])
+
     const openInput = () => {
         Inputref.current.click()
     }
     const captureFile = (e) => {
         const imageFile = e.target.files[0];
-        const objectURL = URL.createObjectURL(imageFile);
-        setimageUrls([...imageUrls, objectURL]);
-        // setmutatingscroll(document.body.scrollHeight) //component rerender nhi kar rha tha scroll ke time.
-        scroll.scrollTo(document.body.scrollHeight)
+        if (imageFile) {
+            const objectURL = URL.createObjectURL(imageFile);
+            setimageUrls([...imageUrls, objectURL]);
+            scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height
+        }
     }
 
 
@@ -38,7 +34,7 @@ const Card = () => {
             <div id="main-container">
 
                 {imageUrls.map((element, index) => {
-                    return (<Fetch screenWidth={screenWidth} key={index} Url={element} />)
+                    return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} />)
                 })}
                 <div style={{
                     margin: '10px 30px 10px 30px',

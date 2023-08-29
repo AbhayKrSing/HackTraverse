@@ -349,36 +349,25 @@ header {
 @media screen and (max-width: 768px) {
   .card {
     font-size: 60px;
-    /* Adjust font size for smaller screens */
     border-radius: 20px;
-    /* Smaller border radius */
     box-shadow: rgba(38, 57, 77, 0.7) 0px 2px 6px 1px;
-    /* Adjusted shadow */
   }
 }
 
 @media screen and (max-width: 768px) {
-
-  /* Apply the following styles only on mobile screens */
   div {
     grid-template-columns: 1fr;
-    /* Change to a single column layout */
     text-align: center;
-    /* Center text within the paragraph */
   }
 
   .card {
-    /* Adjust styles for the motion.div */
     width: 100%;
     margin-right: 0;
-    /* Remove margin on the right */
     height: auto;
-    /* Allow height to adjust based on content */
   }
 
   p {
     margin-top: 10px;
-    /* Adjust top margin */
   }
 }
 
@@ -386,4 +375,32 @@ header {
   background: linear-gradient(45deg, #FF8E53, #FF6B6B);
   transform: scale(1.05);
   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+#div-right::before {
+  content: "";
+  height: 75%;
+  position: absolute;
+  width: 35%;
+  right: 1.5vw;
+  /* left: 65vw; */
+  background: linear-gradient(45deg,
+      #FF8E53,
+      #FF6B6B);
+  z-index: -1;
+  border-radius: 20px;
+}
+
+
+#div-left::before {
+  content: "";
+  height: 75%;
+  position: absolute;
+  width: 35%;
+  left: 1.5vw;
+  background: linear-gradient(45deg,
+      #5384ff,
+      #FF6B6B);
+  z-index: -1;
+  border-radius: 20px;
 }
