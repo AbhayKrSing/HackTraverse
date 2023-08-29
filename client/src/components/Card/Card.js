@@ -2,9 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Fetch from "./Fetch";
 import { animateScroll as scroll } from 'react-scroll';
+import Modal from "../Modal/Modal";
 const Card = () => {
     const Inputref = useRef()
+    const Modelref = useRef()
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [currentImageUrl, setcurrentImageUrl] = useState('')
     const [imageUrls, setimageUrls] = useState([])
     const handleResize = () => {
         setScreenWidth(window.innerWidth)
@@ -22,9 +25,11 @@ const Card = () => {
     const captureFile = (e) => {
         const imageFile = e.target.files[0];
         if (imageFile) {
+            Modelref.current.click()
             const objectURL = URL.createObjectURL(imageFile);
-            setimageUrls([...imageUrls, objectURL]);
-            scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height
+            setcurrentImageUrl(objectURL)
+            // setimageUrls([...imageUrls, objectURL]);  
+            // scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height
         }
     }
 
@@ -78,7 +83,9 @@ const Card = () => {
                     </motion.div >
                 </div >
             </div>
-
+            <Modal currentImageUrl={currentImageUrl} imageUrls={imageUrls} setimageUrls={setimageUrls} scroll={scroll}> <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={Modelref}>
+                Launch demo modal
+            </button></Modal>
 
         </>
 
