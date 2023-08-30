@@ -50,8 +50,7 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
                             <label htmlFor="exampleInputtext" className="form-label">
                                 Write Something about it here
                             </label>
-                            <input
-                                type="text"
+                            <textarea
                                 className="form-control"
                                 id="exampleInputtext"
                                 aria-describedby="emailHelp"
