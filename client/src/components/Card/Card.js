@@ -66,12 +66,12 @@ const Card = () => {
                         }}
                     >
                         <button style={{
-                            borderRadius: '50px',
+                            borderRadius: '50%',
                             background: 'linear-gradient(45deg, #FF6B6B, #FF8E53)',
                             border: 'none',
                             color: 'white',
                             padding: '10px 20px',
-                            fontSize: '30px',
+                            fontSize: '25px',
                             boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
                             cursor: 'pointer',
                             transition: 'transform 0.2s, box-shadow 0.2s',
