@@ -1,24 +1,39 @@
 import React, { useRef, useState } from 'react'
-// import AnimateCheckIcon from '../AnimateCheckIcon'
 import MinimumwordsChecker from '../MinimumwordsChecker'
-
-const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, currentText, setcurrentText }) => {
+import { db, storage } from '../Firebase'
+import { ref, uploadBytes } from 'firebase/storage'
+import { collection, addDoc } from "firebase/firestore";
+const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, currentText, setcurrentText, LoginUser, currentblob }) => {
     const closeref = useRef()
     const inputref = useRef()
     const [condition, setcondition] = useState(false)
     const [textLength, settextLength] = useState(0)
-    const SaveChanges = () => {
-        if (inputref.current.value) {
-            let inputStr = inputref.current.value
-            inputStr = inputStr.replace(/\s+/g, ' ');
-            setcurrentText([...currentText, inputStr])
-            setimageUrls([...imageUrls, currentImageUrl]);
-            closeref.current.click()
-            scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height
-            inputref.current.value = null
-        }
-        else {
-            //use alert here (later)
+
+    const SaveChanges = async () => {
+        try {
+            if (inputref.current.value && LoginUser) {
+                const storageRef = ref(storage, LoginUser.uid + '/' + currentblob.name); //To upload file(blob) on filebase
+                await uploadBytes(storageRef, currentblob)
+                console.log('File uploaded successfully')
+
+
+                let inputStr = inputref.current.value        //uploading user's input data(text)
+                inputStr = inputStr.replace(/\s+/g, ' ');
+                const docRef = await addDoc(collection(db, LoginUser.uid), {
+                    data: inputStr
+                });
+                console.log("Document written with ID: ", docRef.id);
+                setcurrentText([...currentText, inputStr])
+                setimageUrls([...imageUrls, currentImageUrl]);
+                closeref.current.click()
+                scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height
+                inputref.current.value = null
+            }
+            else {
+                alert('Write Something about your journey')
+            }
+        } catch (error) {
+            console.log(error.message)
         }
     }
     const handlechange = (e) => {
@@ -63,6 +78,7 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
                                 className="btn btn-primary mt-4"
                                 onClick={SaveChanges}
                                 disabled={condition}
+
                             >
                                 Save changes
                             </button>

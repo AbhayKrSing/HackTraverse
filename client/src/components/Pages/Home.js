@@ -5,7 +5,7 @@ import { auth } from '../Firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 // import { ref, listAll } from 'firebase/storage'
 import Card from '../Card/Card'
-const Home = ({ setLoginUser }) => {
+const Home = ({ setLoginUser, LoginUser }) => {
     // const [filearray, setfilearray] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
@@ -40,7 +40,7 @@ const Home = ({ setLoginUser }) => {
         <div>
             <Navbar />
             <h1 style={{ textAlign: 'center' }}>Add your journey videos & images here</h1>
-            <Card />
+            <Card LoginUser={LoginUser} />
         </div>
     )
 }

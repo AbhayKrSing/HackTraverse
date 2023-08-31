@@ -3,13 +3,15 @@ import { motion } from "framer-motion";
 import Fetch from "./Fetch";
 import { animateScroll as scroll } from 'react-scroll';
 import Modal from "../Modal/Modal";
-const Card = () => {
+
+const Card = ({ LoginUser }) => {
     const Inputref = useRef()
     const Modelref = useRef()
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [currentImageUrl, setcurrentImageUrl] = useState('')
     const [imageUrls, setimageUrls] = useState([])
     const [currentText, setcurrentText] = useState([])
+    const [currentblob, setcurrentblob] = useState()
     const handleResize = () => {
         setScreenWidth(window.innerWidth)
     }
@@ -18,7 +20,14 @@ const Card = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
+        // eslint-disable-next-line 
     }, []);
+    useEffect(() => {
+        if (LoginUser) { //Initially Login User null rahta hai.
+            console.log(LoginUser)
+        }
+        // eslint-disable-next-line
+    }, [LoginUser])
 
     const openInput = () => {
         Inputref.current.click()
@@ -26,11 +35,10 @@ const Card = () => {
     const captureFile = (e) => {
         const imageFile = e.target.files[0];
         if (imageFile) {
+            setcurrentblob(imageFile)
             Modelref.current.click()
             const objectURL = URL.createObjectURL(imageFile);
             setcurrentImageUrl(objectURL)
-            // setimageUrls([...imageUrls, objectURL]);  
-            // scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height
         }
     }
 
@@ -84,7 +92,7 @@ const Card = () => {
                     </motion.div >
                 </div >
             </div>
-            <Modal currentImageUrl={currentImageUrl} imageUrls={imageUrls} setimageUrls={setimageUrls} scroll={scroll} currentText={currentText} setcurrentText={setcurrentText}> <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={Modelref}>
+            <Modal currentImageUrl={currentImageUrl} imageUrls={imageUrls} setimageUrls={setimageUrls} scroll={scroll} currentText={currentText} setcurrentText={setcurrentText} LoginUser={LoginUser} currentblob={currentblob} setcurrentblob={setcurrentblob}> <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={Modelref}>
                 Launch demo modal
             </button></Modal>
 
