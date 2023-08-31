@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import MinimumwordsChecker from '../MinimumwordsChecker'
 import { db, storage } from '../Firebase'
-import { ref, uploadBytes } from 'firebase/storage'
-import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
+import { collection, addDoc, getDocs } from "firebase/firestore";
 const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, currentText, setcurrentText, LoginUser, currentblob }) => {
     const closeref = useRef()
     const inputref = useRef()
@@ -47,6 +47,44 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
             setcondition(false)
         }
     }
+    useEffect(() => {
+        //1.Now for getting all user's blob and file and render it on web page
+        if (LoginUser) {
+            const folderRef = ref(storage, LoginUser.uid);
+
+            // List all files in the folder
+            listAll(folderRef)
+                .then((res) => {
+                    // Loop through the files
+                    res.items.forEach((itemRef) => {
+                        // Get the download URL of the file
+                        getDownloadURL(itemRef).then((url) => {
+                            // Print the file URL
+                            console.log(url);
+                        });
+                    });
+                })
+        }
+
+
+
+        //2.for getting all user's text data
+        const getdata = async () => {
+            if (LoginUser) {
+                const colRef = collection(db, LoginUser.uid);
+                // Get all documents from the collection
+                getDocs(colRef).then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        // Print the document ID and data
+                        // console.log(doc.id, " => ", doc.data());
+                        console.log(doc.data())
+                    });
+                });
+            }
+        }
+        getdata()
+        // eslint-disable-next-line
+    }, [LoginUser])
 
     return (
         <div>
