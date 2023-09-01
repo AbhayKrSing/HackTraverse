@@ -3,7 +3,7 @@ import MinimumwordsChecker from '../MinimumwordsChecker'
 import { db, storage } from '../Firebase'
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
 import { collection, addDoc, getDocs } from "firebase/firestore";
-const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, currentText, setcurrentText, LoginUser, currentblob }) => {
+const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, currentText, setcurrentText, LoginUser, currentblob, setloading }) => {
     const closeref = useRef()
     const inputref = useRef()
     const [condition, setcondition] = useState(false)
@@ -73,6 +73,7 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
                             urlArray.push(url)
                         }
                         setimageUrls([...urlArray])
+                        setloading(false)
                     }).catch((error) => {
                         console.log(error.message)
                     })
@@ -109,7 +110,7 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
         }
         const fn = async () => {
             await Promise.all[getfile(), getdata()]  //fir ispe kaam karna hai
-            console.log('done')
+
         }
         fn()
         // eslint-disable-next-line
