@@ -27,7 +27,7 @@ const Navbar = () => {
                 <div className="menu-line"></div>
                 <div className="menu-line"></div>
             </div>
-            <ul className={`menu ${isMenuOpen ? 'open' : ''}`}>
+            <ul className={`menu ${isMenuOpen ? 'open' : ''}`} style={{ margin: 0 }}>
                 <li>
                     <Link to="/" className="logout-button" onClick={logout}>Logout</Link>
                 </li>

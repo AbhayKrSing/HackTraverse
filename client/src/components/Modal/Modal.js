@@ -8,19 +8,20 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
     const inputref = useRef()
     const [condition, setcondition] = useState(false)
     const [textLength, settextLength] = useState(0)
+
     const date = new Date()
     const SaveChanges = async () => {
         try {
             if (inputref.current.value && LoginUser) {
                 const storageRef = ref(storage, LoginUser.uid + '/' + currentblob.name + '(' + date.getTime() + ')'); //To upload file(blob) on filebase
-                await uploadBytes(storageRef, currentblob)
+                const uploadResult = await uploadBytes(storageRef, currentblob)
                 console.log('File uploaded successfully')
-
 
                 let inputStr = inputref.current.value        //uploading user's input data(text)
                 inputStr = inputStr.replace(/\s+/g, ' ');
                 const docRef = await addDoc(collection(db, LoginUser.uid), {
                     data: inputStr,
+                    Image: uploadResult.metadata.fullPath,
                     timeCreated: date.getTime()
                 });
                 console.log("Document written with ID: ", docRef.id);
@@ -90,9 +91,10 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
                     let textArray = []
                     const Snapshot = querySnapshot.docs;
                     for (let doc of Snapshot) {
+                        const docId = doc.id
                         const datatext = doc.data().data
                         const timeCreated = doc.data().timeCreated
-                        textArray.push({ datatext, timeCreated })
+                        textArray.push({ datatext, timeCreated, docId })
                     }
                     textArray.sort((a, b) => {
                         return a.timeCreated - b.timeCreated
@@ -109,8 +111,7 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
             }
         }
         const fn = async () => {
-            await Promise.all[getfile(), getdata()]  //fir ispe kaam karna hai
-
+            await Promise.all([getfile(), getdata()])  //fir ispe kaam karna hai
         }
         fn()
         // eslint-disable-next-line

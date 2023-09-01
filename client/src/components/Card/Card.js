@@ -4,6 +4,7 @@ import Fetch from "./Fetch";
 import { animateScroll as scroll } from 'react-scroll';
 import Modal from "../Modal/Modal";
 import spinner from "../Image/loadingspinner.gif"
+import EditModal from "../Modal/EditModal";
 const Card = ({ LoginUser }) => {
     const Inputref = useRef()
     const Modelref = useRef()
@@ -47,10 +48,10 @@ const Card = ({ LoginUser }) => {
     return (
 
         <>
-            {loading ? <img src={spinner} alt="" srcset="" width={300} style={{ margin: 'auto', display: 'block' }} /> :
+            {loading ? <img src={spinner} alt="" srcSet="" width={300} style={{ margin: 'auto', display: 'block' }} /> :
                 <div id="main-container">
 
-                    {imageUrls.map((element, index) => {
+                    {imageUrls.map((element, index) => {  //imageUrls ko modify karna padega docRef.id ko isme dalne ke liye.
                         return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} Text={currentText[index]} />)  //Abhi karna hai currentText[index]
                     })}
                     <div style={{
@@ -98,7 +99,11 @@ const Card = ({ LoginUser }) => {
             <Modal currentImageUrl={currentImageUrl} imageUrls={imageUrls} setimageUrls={setimageUrls} scroll={scroll} currentText={currentText} setcurrentText={setcurrentText} LoginUser={LoginUser} currentblob={currentblob} setcurrentblob={setcurrentblob} setloading={setloading}> <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={Modelref}>
                 Launch demo modal
             </button></Modal>
-
+            <EditModal>
+                <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                </button>
+            </EditModal>
 
         </>
 
