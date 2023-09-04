@@ -8,12 +8,14 @@ import EditModal from "../Modal/EditModal";
 const Card = ({ LoginUser }) => {
     const Inputref = useRef()
     const Modelref = useRef()
+    const EditModalref = useRef()
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [currentImageUrl, setcurrentImageUrl] = useState('')
     const [imageUrls, setimageUrls] = useState([])
     const [currentText, setcurrentText] = useState([])
     const [currentblob, setcurrentblob] = useState()
     const [loading, setloading] = useState(true)
+    const [editmodalcurrenttext, seteditmodalcurrenttext] = useState('')
     const handleResize = () => {
         setScreenWidth(window.innerWidth)
     }
@@ -52,7 +54,7 @@ const Card = ({ LoginUser }) => {
                 <div id="main-container">
 
                     {imageUrls.map((element, index) => {  //imageUrls ko modify karna padega docRef.id ko isme dalne ke liye.
-                        return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} Text={currentText[index].datatext} docId={currentText[index].docId} />)  //Abhi karna hai currentText[index]
+                        return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} Text={currentText[index].datatext} docId={currentText[index].docId} EditModalref={EditModalref} seteditmodalcurrenttext={seteditmodalcurrenttext} />)  //Abhi karna hai currentText[index]
                     })}
                     <div style={{
                         margin: '10px 30px 10px 30px',
@@ -98,9 +100,12 @@ const Card = ({ LoginUser }) => {
                 </div>}
             <Modal currentImageUrl={currentImageUrl} imageUrls={imageUrls} setimageUrls={setimageUrls} scroll={scroll} currentText={currentText} setcurrentText={setcurrentText} LoginUser={LoginUser} currentblob={currentblob} setcurrentblob={setcurrentblob} setloading={setloading}> <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={Modelref}>
                 Launch demo modal
-            </button></Modal>
-            <EditModal>
-                <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            </button>
+            </Modal>
+
+
+            <EditModal editmodalcurrenttext={editmodalcurrenttext}>
+                <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal1" ref={EditModalref} editmodalcurrenttext={editmodalcurrenttext}>
                     Launch demo modal
                 </button>
             </EditModal>
