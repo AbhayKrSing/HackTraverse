@@ -379,28 +379,32 @@ header {
 
 #div-right::before {
   content: "";
-  height: 75%;
   position: absolute;
   width: 35%;
   right: 1.5vw;
-  /* left: 65vw; */
-  background: linear-gradient(45deg,
-      #FF8E53,
-      #FF6B6B);
+  left: 65vw;
   z-index: -1;
   border-radius: 20px;
 }
 
 
+
 #div-left::before {
   content: "";
-  height: 75%;
   position: absolute;
   width: 35%;
   left: 1.5vw;
-  background: linear-gradient(45deg,
-      #5384ff,
-      #FF6B6B);
+
   z-index: -1;
   border-radius: 20px;
+}
+
+#div-right,
+#div-left {
+  /* background: rgba(255, 255, 255, 0.579); */
+  background: rgba(255, 255, 0, 0.23);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 20px;
 }

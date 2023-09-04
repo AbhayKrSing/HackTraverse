@@ -25,7 +25,7 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
                     timeCreated: date.getTime()
                 });
                 console.log("Document written with ID: ", docRef.id);
-                setcurrentText([...currentText, inputStr])
+                setcurrentText([...currentText, { datatext: inputStr, docId: docRef.id }])
                 setimageUrls([...imageUrls, currentImageUrl]);
                 closeref.current.click()
                 scroll.scrollTo(document.body.scrollHeight)   //for scrolling to scroll height
@@ -59,7 +59,6 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
                 listAll(folderRef)
                     .then(async (res) => {
                         let ItemArray = res.items;
-                        console.log(ItemArray)
                         let urlArray = []
                         //Sorting of ItemArray according to time created.
                         ItemArray.sort((element1, element2) => {
@@ -100,7 +99,7 @@ const Modal = ({ children, currentImageUrl, imageUrls, setimageUrls, scroll, cur
                         return a.timeCreated - b.timeCreated
                     })
                     textArray = textArray.map((element) => {
-                        return element.datatext
+                        return element
                     })
                     setcurrentText([...textArray])
 

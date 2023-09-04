@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-const Fetch = ({ screenWidth, Url, num, Text }) => {
+const Fetch = ({ screenWidth, Url, num, Text, docId }) => {
+    const handledivleft = () => {
+        console.log(docId)
+    }
+    const handledivright = () => {
+        console.log(docId)
+    }
     return (
         <>
 
@@ -11,7 +17,13 @@ const Fetch = ({ screenWidth, Url, num, Text }) => {
                 gridTemplateColumns: `${screenWidth < 768 ? '1fr' : '1fr 1fr 1fr'}`,
                 gap: '20px',
             }}>
-                <div id={screenWidth < 768 ? '' : num % 2 !== 0 ? 'div-left' : ''} style={{ height: screenWidth < 768 ? '' : '200px', textAlign: 'end', overflow: 'visible', order: screenWidth < 768 && num !== 0 ? 1 : 0 }}>{num % 2 !== 0 ? Text : ''}</div>
+                <motion.div id={screenWidth < 768 ? '' : num % 2 !== 0 ? 'div-left' : ''} style={{ height: screenWidth < 768 ? '' : '200px', textAlign: 'end', fontSize: '40px', fontStyle: 'italic', overflow: 'visible', order: screenWidth < 768 && num !== 0 ? 1 : 0, pointerEvents: num % 2 === 0 ? 'none' : '' }}
+                    whileHover={{ scale: 1.1, }}
+                    whileTap={{ scale: 0.9, opacity: 0.5 }}
+                    onClick={handledivleft} >{num % 2 !== 0 ? Text : ''}
+                </motion.div>
+
+
                 <motion.div
                     className="card"
                     style={{
@@ -32,7 +44,13 @@ const Fetch = ({ screenWidth, Url, num, Text }) => {
                 >
                     <img src={Url} alt="img" srcSet="" width={"100%"} />
                 </motion.div >
-                <div id={screenWidth < 768 ? '' : num % 2 !== 0 ? '' : 'div-right'} style={{ height: screenWidth < 768 ? '' : '200px', textAlign: 'start', overflow: 'visible' }}>{num % 2 !== 0 ? '' : Text}</div>
+
+
+
+                <motion.div id={screenWidth < 768 ? '' : num % 2 !== 0 ? '' : 'div-right'} style={{ height: screenWidth < 768 ? '' : '200px', textAlign: 'start', overflow: 'visible', fontSize: '35px', fontStyle: 'italic', pointerEvents: num % 2 !== 0 ? 'none' : '' }}
+                    whileHover={{ scale: 1.1, }}
+                    whileTap={{ scale: 0.9, opacity: 0.5 }}
+                    onClick={handledivright}>{num % 2 !== 0 ? '' : Text}</motion.div>
             </div >
             {/* for vertical line */}
             <div style={{ display: screenWidth < 768 ? 'none' : 'flex', justifyContent: 'center', alignItems: 'center' }}>

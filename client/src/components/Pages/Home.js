@@ -25,7 +25,7 @@ const Home = ({ setLoginUser, LoginUser }) => {
     return (
         <div>
             <Navbar />
-            <h1 style={{ textAlign: 'center', margin: '40px' }}>Add your journey videos & images here</h1>
+            <h1 style={{ textAlign: 'center', margin: '40px', fontFamily: 'serif' }}>Add your journey videos & images here</h1>
             <Card LoginUser={LoginUser} />
         </div>
     )

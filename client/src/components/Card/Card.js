@@ -52,7 +52,7 @@ const Card = ({ LoginUser }) => {
                 <div id="main-container">
 
                     {imageUrls.map((element, index) => {  //imageUrls ko modify karna padega docRef.id ko isme dalne ke liye.
-                        return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} Text={currentText[index]} />)  //Abhi karna hai currentText[index]
+                        return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} Text={currentText[index].datatext} docId={currentText[index].docId} />)  //Abhi karna hai currentText[index]
                     })}
                     <div style={{
                         margin: '10px 30px 10px 30px',
