@@ -1,6 +1,9 @@
 import React from 'react'
 
-const EditModal = ({ children, editmodalcurrenttext }) => {
+const EditModal = ({ children, editmodalcurrenttext, seteditmodalcurrenttext }) => {
+    const handlechange = (e) => {
+        seteditmodalcurrenttext(e.target.value)
+    }
     return (
         <>
 
@@ -14,7 +17,7 @@ const EditModal = ({ children, editmodalcurrenttext }) => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <textarea name="edit" id="" style={{ width: '100%' }} defaultValue={editmodalcurrenttext} />
+                            <textarea name="edit" id="" style={{ width: '100%' }} value={editmodalcurrenttext} onChange={handlechange} />
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -54,7 +54,7 @@ const Card = ({ LoginUser }) => {
                 <div id="main-container">
 
                     {imageUrls.map((element, index) => {  //imageUrls ko modify karna padega docRef.id ko isme dalne ke liye.
-                        return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} Text={currentText[index].datatext} docId={currentText[index].docId} EditModalref={EditModalref} seteditmodalcurrenttext={seteditmodalcurrenttext} />)  //Abhi karna hai currentText[index]
+                        return (<Fetch screenWidth={screenWidth} key={index} Url={element} num={index} Text={currentText[index].datatext} docId={currentText[index].docId} EditModalref={EditModalref} seteditmodalcurrenttext={seteditmodalcurrenttext} editmodalcurrenttext={editmodalcurrenttext} />)  //Abhi karna hai currentText[index]
                     })}
                     <div style={{
                         margin: '10px 30px 10px 30px',
@@ -104,7 +104,7 @@ const Card = ({ LoginUser }) => {
             </Modal>
 
 
-            <EditModal editmodalcurrenttext={editmodalcurrenttext}>
+            <EditModal editmodalcurrenttext={editmodalcurrenttext} seteditmodalcurrenttext={seteditmodalcurrenttext}>
                 <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal1" ref={EditModalref} editmodalcurrenttext={editmodalcurrenttext}>
                     Launch demo modal
                 </button>

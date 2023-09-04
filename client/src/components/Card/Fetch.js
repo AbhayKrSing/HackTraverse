@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-const Fetch = ({ screenWidth, Url, num, Text, docId, EditModalref, seteditmodalcurrenttext }) => {
+const Fetch = ({ screenWidth, Url, num, Text, docId, EditModalref, seteditmodalcurrenttext, editmodalcurrenttext }) => {
     const handledivleft = (e) => {
         seteditmodalcurrenttext(e.target.innerText)
         EditModalref.current.click()
+
     }
     const handledivright = (e) => {
         seteditmodalcurrenttext(e.target.innerText)
