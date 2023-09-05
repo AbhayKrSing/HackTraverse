@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from '../Firebase'
-const EditModal = ({ children, editmodalcurrenttext, seteditmodalcurrenttext, LoginUser, docId_forupdate }) => {
+const EditModal = ({ children, editmodalcurrenttext, seteditmodalcurrenttext, LoginUser, docId_forupdate, array, setarray }) => {
+    const closeref = useRef()
     const handlechange = (e) => {
         seteditmodalcurrenttext(e.target.value)
     }
@@ -12,8 +13,21 @@ const EditModal = ({ children, editmodalcurrenttext, seteditmodalcurrenttext, Lo
                 await updateDoc(washingtonRef, {
                     data: editmodalcurrenttext
                 })
-                console.log('data updated')
-
+                array = array.map((element) => {
+                    if (element.docId === docId_forupdate) {
+                        // const Timetrack=element.timeCreated;
+                        return ({
+                            datatext: editmodalcurrenttext,
+                            docId: element.docId,
+                            timeCreated: element.timeCreated
+                        })
+                    }
+                    else {
+                        return element
+                    }
+                })
+                setarray(array)
+                closeref.current.click()
             }
             else {
                 throw Error('docref id not present')
@@ -39,7 +53,7 @@ const EditModal = ({ children, editmodalcurrenttext, seteditmodalcurrenttext, Lo
                             <textarea name="edit" id="" style={{ width: '100%' }} value={editmodalcurrenttext} onChange={handlechange} />
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary d-none" data-bs-dismiss="modal" ref={closeref}>Close</button>
                             <button type="button" className="btn btn-primary" onClick={updatedata}>Save changes</button>
                         </div>
                     </div>

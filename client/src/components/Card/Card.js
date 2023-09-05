@@ -105,7 +105,7 @@ const Card = ({ LoginUser }) => {
             </Modal>
 
 
-            <EditModal editmodalcurrenttext={editmodalcurrenttext} seteditmodalcurrenttext={seteditmodalcurrenttext} LoginUser={LoginUser} docId_forupdate={docId_forupdate}>
+            <EditModal editmodalcurrenttext={editmodalcurrenttext} seteditmodalcurrenttext={seteditmodalcurrenttext} LoginUser={LoginUser} docId_forupdate={docId_forupdate} array={currentText} setarray={setcurrentText}>
                 <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal1" ref={EditModalref} editmodalcurrenttext={editmodalcurrenttext}>
                     Launch demo modal
                 </button>
