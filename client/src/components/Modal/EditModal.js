@@ -15,7 +15,6 @@ const EditModal = ({ children, editmodalcurrenttext, seteditmodalcurrenttext, Lo
                 })
                 array = array.map((element) => {
                     if (element.docId === docId_forupdate) {
-                        // const Timetrack=element.timeCreated;
                         return ({
                             datatext: editmodalcurrenttext,
                             docId: element.docId,
