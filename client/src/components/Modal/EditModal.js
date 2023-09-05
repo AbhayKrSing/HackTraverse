@@ -1,8 +1,27 @@
 import React from 'react'
-
-const EditModal = ({ children, editmodalcurrenttext, seteditmodalcurrenttext }) => {
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from '../Firebase'
+const EditModal = ({ children, editmodalcurrenttext, seteditmodalcurrenttext, LoginUser, docId_forupdate }) => {
     const handlechange = (e) => {
         seteditmodalcurrenttext(e.target.value)
+    }
+    const updatedata = async () => {
+        try {
+            if (docId_forupdate) {
+                const washingtonRef = doc(db, LoginUser.uid, docId_forupdate);
+                await updateDoc(washingtonRef, {
+                    data: editmodalcurrenttext
+                })
+                console.log('data updated')
+
+            }
+            else {
+                throw Error('docref id not present')
+            }
+
+        } catch (error) {
+            console.log(error.message)
+        }
     }
     return (
         <>
@@ -20,8 +39,8 @@ const EditModal = ({ children, editmodalcurrenttext, seteditmodalcurrenttext }) 
                             <textarea name="edit" id="" style={{ width: '100%' }} value={editmodalcurrenttext} onChange={handlechange} />
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
+                            <button type="button" className="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary" onClick={updatedata}>Save changes</button>
                         </div>
                     </div>
                 </div>
